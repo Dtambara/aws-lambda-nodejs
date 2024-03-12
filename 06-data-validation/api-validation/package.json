@@ -1,0 +1,29 @@
+{
+  "name": "api-validation",
+  "description": "<!-- title: 'AWS NodeJS Example' description: 'This template demonstrates how to deploy a NodeJS function running on AWS Lambda using the traditional Serverless Framework.' layout: Doc framework: v3 platform: AWS language: nodeJS priority: 1 authorLink: 'https://github.com/serverless' authorName: 'Serverless, inc.' authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4' -->",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon --exec npm run offline",
+    "offline": "npx sls offline start --host 0.0.0.0",
+    "test": "IS_OFFLINE=true npx jest --collect-coverage",
+    "test:watch": "IS_OFFLINE=true npx jest --watch-all",
+    "invoke-local-insert": "IS_OFFLINE=true sls invoke local -f hero-insert --path mocks/heroes.insert.json",
+    "invoke-local-trigger": "IS_OFFLINE=true sls invoke local -f hero-trigger --path mocks/heroes.trigger.json",
+    "invoke": "sls invoke -f hero-insert --path mocks/heroes.insert.json",
+    "log-trigger": "sls logs -f hero-trigger"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "aws-sdk": "^2.1575.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "serverless": "^3.38.0",
+    "serverless-offline": "^13.3.3"
+  },
+ 
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

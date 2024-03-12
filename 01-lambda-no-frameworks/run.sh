@@ -4,7 +4,7 @@
 ROLE_NAME=lambda-example
 NODEJS_VERSION=nodejs16.x
 FUNCTION_NAME=hello-cli
-POLICY_ARN=policy
+POLICY_ARN=arn:aws:iam::030848937120:role/lambda-example
 
 mkdir -p logs
 

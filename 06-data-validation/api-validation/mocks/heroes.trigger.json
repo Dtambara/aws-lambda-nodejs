@@ -1,0 +1,13 @@
+{
+  "Records": [
+  {
+    "eventID": "2da4d2c478a54b6e84c97f691f48bc48",
+    "eventName": "INSERT",
+    "eventVersion": "1.1",
+    "eventSource": "aws:dynamodb",
+    "awsRegion": "us-east-1",
+    "dynamodb": [],
+    "eventSourceARN": "arn:aws:dynamodb:us-east-1:030848937120:table/Heroes/stream/2024-03-12T19:57:52.302"
+  }
+]
+}
