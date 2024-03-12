@@ -6,7 +6,12 @@ provider:
   runtime: nodejs18.x
   environment:
     LOCALSTACK_HOST: ${env:LOCALSTACK_HOST, "localhost"}
-
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: s3:ListAllMyBuckets
+          Resource: "*"
 plugins: 
   - serverless-offline
 

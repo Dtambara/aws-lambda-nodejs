@@ -22,6 +22,21 @@ services:
       - localstack
     environment:
       LOCALSTACK_HOST: localstack
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: TEST
+  test:
+    build: .
+    command: npm run test:watch
+    volumes:
+      - .:/src
+      - nodemodules:/src/node_modules
+    restart: on-failure
+    depends_on:
+      - localstack
+    environment:
+      LOCALSTACK_HOST: localstack
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: TEST
       
 volumes:
   nodemodules: {}
