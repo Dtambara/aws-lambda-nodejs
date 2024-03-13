@@ -1,0 +1,35 @@
+service: multienv
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: 'us-east-1'
+  stage: ${opt:stage, 'prod'}
+  environment:
+    ${file(./config/env.${self:provider.stage}.json)}
+  iam:
+    role:
+      statements:
+        ${file(./config/serverless/db.iam.yml)}
+custom:
+  schedulerRate: rate(1 minute)
+  enable: true
+  tableName: ${self:provider.environment.DbTableName}
+  dbWriteCapacityUnits: ${self:provider.environment.DbWriteCapacityUnits}
+  dbReadCapacityUnits: ${self:provider.environment.DbReadCapacityUnits}
+
+functions:
+  hello:
+    handler: src/index.hello
+    events:
+      - schedule:
+          rate: ${self:custom.schedulerRate}
+          name: schedule-commit-message-${self:provider.stage}
+          description: get commit messages every minute
+          enabled: ${self:custom.enable}
+
+resources:
+  Resources:
+    ${file(./config/serverless/resources/db.commitMessageTable.yml)}
+    

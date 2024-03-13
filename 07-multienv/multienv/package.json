@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "aws-sdk": "^2.1576.0",
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12",
+    "env-var": "^7.4.1"
+  },
+  "name": "multienv",
+  "description": "<!-- title: 'AWS NodeJS Example' description: 'This template demonstrates how to deploy a NodeJS function running on AWS Lambda using the traditional Serverless Framework.' layout: Doc framework: v3 platform: AWS language: nodeJS priority: 1 authorLink: 'https://github.com/serverless' authorName: 'Serverless, inc.' authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4' -->",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "npx nodemon --exec npm run offline",
+    "offline": "npx sls offline start --host 0.0.0.0",
+    "test": "IS_OFFLINE=true npx jest --collect-coverage",
+    "test:watch": "IS_OFFLINE=true npx jest --watch-all",
+    "invoke-local": "IS_OFFLINE=true sls invoke local -f hello"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
